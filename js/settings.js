@@ -3,6 +3,7 @@ const GRAVITY = 0.1;
 const IMAGE_SCALE = 0.2;
 const MOVEMENT_UNITS = 5;
 const ANGLE_OFFSET = -Math.PI / 2;
+const ANGLE_OFFSET_REVERSED = Math.PI / 2;
 const FRICTION = 0.95;
 
 /* Raptor */
@@ -19,6 +20,11 @@ const ROTATE_ACC = 0.1;
 const MAX_ROTATE = 1;
 const RAPTOR_FRICTION = 0.95;
 const RAPTOR_IMAGE_SOURCE = 'assets/image/sprites/raptor/raptor.png';
+
+/* Enemy */
+const ENEMY_SPEED_1 = 3;
+const ENEMY_HEALTH_1 = 100;
+const ENEMY_URL_1 = 'assets/image/sprites/enemies/enemy_1.png';
 
 /* Bullet */
 const BULLET_SPEED = 10;

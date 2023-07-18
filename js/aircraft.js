@@ -14,7 +14,12 @@ class Aircraft {
     }
 
     display() {
+        ctx.save();
+        ctx.translate(this.pos.x, this.pos.y);
+        ctx.rotate(Math.PI);
+        ctx.translate(-this.pos.x, -this.pos.y);
         ctx.drawImage(this.img, this.pos.x, this.pos.y, this.img.naturalWidth * this.scale, this.img.naturalHeight * this.scale);
+        ctx.restore();
     }
 
     update() {

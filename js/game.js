@@ -8,6 +8,7 @@ canvas.height = window.innerHeight;
 var level;
 var raptor;
 var bullets;
+var enemies;
 
 /* KEYBOARD EVENTS */
 window.addEventListener("keypress", KeyPressed);
@@ -58,6 +59,13 @@ function createRaptor() {
   raptor = new Raptor(RAPTOR_POS_X, RAPTOR_POS_Y, RAPTOR_ALTITUDE, 0, 0, RAPTOR_HEALTH, RAPTOR_IMAGE_SOURCE, RAPTOR_SHIELD);
 }
 
+function createEnemies() {
+  let e1 = new Aircraft(canvas.width / 4, 0, 1, ENEMY_SPEED_1, ANGLE_OFFSET_REVERSED, ENEMY_HEALTH_1, ENEMY_URL_1);
+  let e2 = new Aircraft(canvas.width / 2, 0, 1, ENEMY_SPEED_1, ANGLE_OFFSET_REVERSED, ENEMY_HEALTH_1, ENEMY_URL_1);
+  let e3 = new Aircraft(canvas.width * 3 / 4 , 0, 1, ENEMY_SPEED_1, ANGLE_OFFSET_REVERSED, ENEMY_HEALTH_1, ENEMY_URL_1);
+  enemies = [e1, e2, e3];
+}
+
 function createBullets() {
   bullets = [];
 }
@@ -65,6 +73,13 @@ function createBullets() {
 function updateRaptor() {
   raptor.display();
   raptor.update();
+}
+
+function updateEnemies() {
+  for (let enemy of enemies) {
+    enemy.display();
+    enemy.update();
+  }
 }
 
 function updateBullets() {
@@ -100,6 +115,7 @@ function checkRaptorInScreenEdges() {
 function setup() {
   setBackground();
   createRaptor();
+  createEnemies();
   createBullets();
 
     // setInterval(() => {
@@ -111,6 +127,7 @@ function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   updateRaptor();
   checkRaptorInScreenEdges();
+  updateEnemies();
   updateBullets();
   removeBulletsOffScreen();
   requestAnimationFrame(update);
