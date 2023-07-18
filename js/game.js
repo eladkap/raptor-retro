@@ -43,8 +43,8 @@ function KeyDown(event) {
 }
 
 function KeyReleased() {
-    raptor.setAcceleration(false);
-    raptor.stop();
+  raptor.setAcceleration(false);
+  raptor.stop();
 }
 
 /* Keyboard Events */
@@ -54,17 +54,32 @@ function setBackground() {
 }
 
 function createRaptor() {
-    raptor = new Raptor(RAPTOR_POS_X, RAPTOR_POS_Y, RAPTOR_ALTITUDE, 0, 0, RAPTOR_HEALTH, RAPTOR_IMAGE_SOURCE, RAPTOR_SHIELD);
+  raptor = new Raptor(RAPTOR_POS_X, RAPTOR_POS_Y, RAPTOR_ALTITUDE, 0, 0, RAPTOR_HEALTH, RAPTOR_IMAGE_SOURCE, RAPTOR_SHIELD);
 }
 
 function updateRaptor() {
-    raptor.display();
-    raptor.update();
+  raptor.display();
+  raptor.update();
+}
+
+function checkRaptorInScreenEdges() {
+  if (raptor.pos.x > canvas.width - raptor.width) {
+    raptor.pos.x = canvas.width - raptor.width;
+  }
+  if (raptor.pos.x < 0) {
+    raptor.pos.x = 0;
+  } 
+  if (raptor.pos.y > canvas.height - raptor.height) {
+    raptor.pos.y = canvas.height - raptor.height;
+  }
+  if (raptor.pos.y < 0) {
+    raptor.pos.y = 0;
+  }
 }
 
 function setup() {
-    setBackground();
-    createRaptor();
+  setBackground();
+  createRaptor();
 
 
     // setInterval(() => {
@@ -73,9 +88,10 @@ function setup() {
 }
 
 function update() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    updateRaptor();
-    requestAnimationFrame(update);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  updateRaptor();
+  checkRaptorInScreenEdges();
+  requestAnimationFrame(update);
 }
 
 setup();

@@ -9,6 +9,8 @@ class Aircraft {
         this.img = new Image();
         this.setImage(imageUrl);
         this.scale = IMAGE_SCALE;
+        this.width = this.img.naturalWidth * this.scale;
+        this.height = this.img.naturalHeight * this.scale;
     }
 
     display() {
