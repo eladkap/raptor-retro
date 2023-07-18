@@ -4,6 +4,7 @@ class Raptor extends Aircraft {
         this.steer = new Vector(0, 0);
         this.shield = shield;
         this.acceleration = false;
+        this.angle = 0;
         this.maxSpeed = RAPTOR_MAX_SPEED;
         this.boostMaxSpeed = RAPTOR_MAX_BOOST_SPEED;
     }
@@ -63,5 +64,19 @@ class Raptor extends Aircraft {
         if (this.velocity.magnitude() > 0) {
             this.velocity.multiply(FRICTION);
         }
+    }
+
+    fireBullet(a) {
+        // let v = Vector.fromAngle(this.angle + a, BULLET_SPEED);
+        let v = new Vector(0, -BULLET_SPEED);
+        let bullet = new Bullet(
+            this.pos.x + this.width / 2,
+            this.pos.y,
+            BULLET_DAMAGE,
+            BULLET_RADIUS,
+            BULLET_COLOR,
+            v
+          );
+          bullets.push(bullet);
     }
 }

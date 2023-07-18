@@ -7,6 +7,7 @@ canvas.height = window.innerHeight;
 /* GLOBALS */
 var level;
 var raptor;
+var bullets;
 
 /* KEYBOARD EVENTS */
 window.addEventListener("keypress", KeyPressed);
@@ -14,8 +15,8 @@ window.addEventListener("keydown", KeyDown);
 window.addEventListener("keyup", KeyReleased);
 
 function KeyPressed(event) {
-    if (event.key == " ") {
-        console.log("rocket");
+    if (event.key == ' ') {
+      raptor.fireBullet(ANGLE_OFFSET);
     }
 }
 
@@ -37,7 +38,7 @@ function KeyDown(event) {
         raptor.setAcceleration(true);
       }
       if (event.key == " ") {
-        // raptor.fire(ANGLE_OFFSET);
+        // raptor.fireBullet(ANGLE_OFFSET);
         // Sleep(BULLET_INTERVAL);
       }
 }
@@ -57,9 +58,28 @@ function createRaptor() {
   raptor = new Raptor(RAPTOR_POS_X, RAPTOR_POS_Y, RAPTOR_ALTITUDE, 0, 0, RAPTOR_HEALTH, RAPTOR_IMAGE_SOURCE, RAPTOR_SHIELD);
 }
 
+function createBullets() {
+  bullets = [];
+}
+
 function updateRaptor() {
   raptor.display();
   raptor.update();
+}
+
+function updateBullets() {
+  for (let bullet of bullets) {
+    bullet.display();
+    bullet.update();
+  }
+}
+
+function removeBulletsOffScreen() {
+  for (let i = 0; i < bullets.length; i++) {
+    if (bullets[i].toDestroy) {
+      bullets.splice(i, 1);
+    }
+  }
 }
 
 function checkRaptorInScreenEdges() {
@@ -80,7 +100,7 @@ function checkRaptorInScreenEdges() {
 function setup() {
   setBackground();
   createRaptor();
-
+  createBullets();
 
     // setInterval(() => {
     //     console.log('Setup finished.');
@@ -91,6 +111,8 @@ function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   updateRaptor();
   checkRaptorInScreenEdges();
+  updateBullets();
+  removeBulletsOffScreen();
   requestAnimationFrame(update);
 }
 

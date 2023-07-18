@@ -21,10 +21,11 @@ const RAPTOR_FRICTION = 0.95;
 const RAPTOR_IMAGE_SOURCE = 'assets/image/sprites/raptor/raptor.png';
 
 /* Bullet */
-const BULLET_SPEED = 20;
-const BULLET_RADIUS = 1;
+const BULLET_SPEED = 10;
+const BULLET_RADIUS = 3;
 const BULLET_INTERVAL = 500;
 const BULLET_DAMAGE = 5;
+const BULLET_COLOR = 'rgba(255,100,100,1)';
 
 /* Rocket */
 const ROCKET_SPEED = 10;
