@@ -22,23 +22,24 @@ function KeyPressed(event) {
 function KeyDown(event) {
     if (event.key == "ArrowLeft") {
         console.log('go left');
-        // raptor.SteerLeft();
+        raptor.steerLeft();
+        raptor.pos.x-=5;
         // raptor.SetAccelerating(true);
       }
       if (event.key == "ArrowRight") {
         console.log('go right');
-        // raptor.SteerRight();
+        raptor.steerRight();
         // raptor.SetAccelerating(true);
       }
       if (event.key == "ArrowUp") {
         console.log('go up');
-        // raptor.Forward();
+        raptor.forward();
         // raptor.SetAccelerating(true);
       }
       if (event.key == "ArrowDown") {
         console.log('go down');
-        // raptor.Reverse();
-        // raptor.SetAccelerating(true);
+        raptor.reverse();
+        // raptor.setAccelerating(true);
       }
       if (event.key == " ") {
         // raptor.FireBullet(ANGLE_OFFSET);

@@ -8,10 +8,11 @@ class Aircraft {
         this.health = health;
         this.img = new Image();
         this.setImage(imageUrl);
+        this.scale = IMAGE_SCALE;
     }
 
     display() {
-        ctx.drawImage(this.img, this.pos.x, this.pos.y);
+        ctx.drawImage(this.img, this.pos.x, this.pos.y, this.img.naturalWidth * this.scale, this.img.naturalHeight * this.scale);
     }
 
     update() {
@@ -20,6 +21,10 @@ class Aircraft {
 
     setImage(imageUrl) {
         this.img.src = imageUrl;
+    }
+
+    setScale(scale) {
+        this.scale = scale;
     }
 
     damage(amount) {

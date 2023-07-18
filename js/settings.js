@@ -1,10 +1,11 @@
 /* Game Physics */
 const GRAVITY = 0.1;
+const IMAGE_SCALE = 0.2;
 
 
 /* Raptor */
 const RAPTOR_POS_X = window.innerWidth * 0.5;
-const RAPTOR_POS_Y = window.innerHeight * 0.95;
+const RAPTOR_POS_Y = window.innerHeight * 0.8;
 const RAPTOR_ALTITUDE = 100;
 const RAPTOR_HEALTH = 1000;
 const RAPTOR_SHIELD = 1000;
