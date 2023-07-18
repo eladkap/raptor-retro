@@ -3,7 +3,7 @@ class Raptor extends Aircraft {
         super(x, y, altitude, speed, heading, health, imageUrl);
         this.steer = new Vector(0, 0);
         this.shield = shield;
-        this.acceleration = 0;
+        this.acceleration = false;
         this.maxSpeed = RAPTOR_MAX_SPEED;
         this.boostMaxSpeed = RAPTOR_MAX_BOOST_SPEED;
     }
@@ -13,7 +13,11 @@ class Raptor extends Aircraft {
     }
 
     update() {
+        if (this.acceleration) {
+            this.accelerate();
+        }
         this.pos.add(this.velocity);
+        this.slowDown();
     }
 
     steerLeft() {
@@ -34,5 +38,30 @@ class Raptor extends Aircraft {
     reverse() {
         // this.SetAngle(Math.PI);
         this.steer.y = 1;
+    }
+
+    stop() {
+        this.steer.set(0, 0);
+    }
+
+    force(a) {
+        let f = new Vector(this.steer.x, this.steer.y);
+        if (this.velocity.magnitude() < this.maxSpeed) {
+            this.velocity.add(f);
+        }
+    }
+
+    setAcceleration(b) {
+        this.acceleration = b;
+    }
+
+    accelerate() {
+        this.force(ANGLE_OFFSET);
+    }
+
+    slowDown() {
+        if (this.velocity.magnitude() > 0) {
+            this.velocity.multiply(FRICTION);
+        }
     }
 }

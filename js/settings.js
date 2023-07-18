@@ -1,7 +1,9 @@
 /* Game Physics */
 const GRAVITY = 0.1;
 const IMAGE_SCALE = 0.2;
-
+const MOVEMENT_UNITS = 5;
+const ANGLE_OFFSET = -Math.PI / 2;
+const FRICTION = 0.95;
 
 /* Raptor */
 const RAPTOR_POS_X = window.innerWidth * 0.5;

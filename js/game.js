@@ -21,42 +21,36 @@ function KeyPressed(event) {
 
 function KeyDown(event) {
     if (event.key == "ArrowLeft") {
-        console.log('go left');
         raptor.steerLeft();
-        raptor.pos.x-=5;
-        // raptor.SetAccelerating(true);
+        raptor.setAcceleration(true);
       }
       if (event.key == "ArrowRight") {
-        console.log('go right');
         raptor.steerRight();
-        // raptor.SetAccelerating(true);
+        raptor.setAcceleration(true);
       }
       if (event.key == "ArrowUp") {
-        console.log('go up');
         raptor.forward();
-        // raptor.SetAccelerating(true);
+        raptor.setAcceleration(true);
       }
       if (event.key == "ArrowDown") {
-        console.log('go down');
         raptor.reverse();
-        // raptor.setAccelerating(true);
+        raptor.setAcceleration(true);
       }
       if (event.key == " ") {
-        // raptor.FireBullet(ANGLE_OFFSET);
+        // raptor.fire(ANGLE_OFFSET);
         // Sleep(BULLET_INTERVAL);
       }
 }
 
 function KeyReleased() {
-    console.log('key released');
-    // raptor.setAccelerating(false);
-    // raptor.stop();
+    raptor.setAcceleration(false);
+    raptor.stop();
 }
 
 /* Keyboard Events */
 
 function setBackground() {
-    // ctx.fillStyle = "url('../../assets/image/background/bg_space1.png')";
+
 }
 
 function createRaptor() {
@@ -79,10 +73,10 @@ function setup() {
 }
 
 function update() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     updateRaptor();
     requestAnimationFrame(update);
 }
-
 
 setup();
 requestAnimationFrame(update);
