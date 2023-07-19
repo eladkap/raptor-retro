@@ -3,44 +3,39 @@
   "mission": 1,
   "enemies": [
     {
-	  "type": "enemy1",
+	  "type": "E1",
 	  "x": 100,
 	  "y": -50,
-	  "vx": 0,
-	  "vy": 4,
+	  "speed": 4,
 	  "health": 100
     },
     {
-	  "type": "enemy1",
+	  "type": "E1",
 	  "x": 1200,
 	  "y": -50,
-	  "vx": 0,
-	  "vy": 4,
+	  "speed": 4,
 	  "health": 100
     }, 
 	
 	{
-	  "type": "enemy1",
+	  "type": "E1",
 	  "x": 100,
 	  "y": -1000,
-	  "vx": 0,
-	  "vy": 4,
+	  "speed": 4,
 	  "health": 100
     },
 	{
-	  "type": "enemy1",
+	  "type": "E1",
 	  "x": 600,
 	  "y": -1000,
-	  "vx": 0,
-	  "vy": 4,
+	  "speed": 4,
 	  "health": 100
     }, 
 	{
-	  "type": "enemy1",
+	  "type": "E1",
 	  "x": 1100,
 	  "y": -1000,
-	  "vx": 0,
-	  "vy": 4,
+	  "speed": 4,
 	  "health": 100
     }
   ]

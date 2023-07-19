@@ -6,6 +6,15 @@ const ANGLE_OFFSET = -Math.PI / 2;
 const ANGLE_OFFSET_REVERSED = Math.PI / 2;
 const FRICTION = 0.95;
 
+/* Game Graphics */
+
+/** Fonts **/
+const FONT_FAMILY = 'Lucida Grande';
+const FONTS_SIZE_S = '24';
+const FONTS_SIZE_M = '36';
+const FONTS_SIZE_L = '48';
+
+
 /* Raptor */
 const RAPTOR_POS_X = window.innerWidth * 0.5;
 const RAPTOR_POS_Y = window.innerHeight * 0.8;
@@ -21,10 +30,14 @@ const MAX_ROTATE = 1;
 const RAPTOR_FRICTION = 0.95;
 const RAPTOR_IMAGE_SOURCE = 'assets/image/sprites/raptor/raptor.png';
 
-/* Enemy */
-const ENEMY_SPEED_1 = 3;
-const ENEMY_HEALTH_1 = 100;
-const ENEMY_URL_1 = 'assets/image/sprites/enemies/enemy_1.png';
+/* Enemies */
+const ENEMY_IMAGE_MAP = {
+    E1: 'assets/image/sprites/enemies/enemy_1.png',
+    E2: 'assets/image/sprites/enemies/enemy_2.png',
+    E3: 'assets/image/sprites/enemies/enemy_3.png',
+    E4: 'assets/image/sprites/enemies/enemy_4.png',
+    E5: 'assets/image/sprites/enemies/enemy_5.png',
+}
 
 /* Bullet */
 const BULLET_SPEED = 10;

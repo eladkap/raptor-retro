@@ -8,7 +8,7 @@ canvas.height = window.innerHeight;
 var level;
 var raptor;
 var bullets;
-var enemies;
+var enemies = [];
 
 /* KEYBOARD EVENTS */
 window.addEventListener("keypress", KeyPressed);
@@ -59,11 +59,17 @@ function createRaptor() {
   raptor = new Raptor(RAPTOR_POS_X, RAPTOR_POS_Y, RAPTOR_ALTITUDE, 0, 0, RAPTOR_HEALTH, RAPTOR_IMAGE_SOURCE, RAPTOR_SHIELD);
 }
 
+function createEnemy(enemyObj) {
+  let enemyImageUrl = ENEMY_IMAGE_MAP[enemyObj.type];
+  let enemy = new Aircraft(enemyObj.x, enemyObj.y, 1,enemyObj.speed, ANGLE_OFFSET_REVERSED, enemyObj.health, enemyImageUrl);
+  return enemy;
+}
+
 function createEnemies() {
-  let e1 = new Aircraft(canvas.width / 4, 0, 1, ENEMY_SPEED_1, ANGLE_OFFSET_REVERSED, ENEMY_HEALTH_1, ENEMY_URL_1);
-  let e2 = new Aircraft(canvas.width / 2, 0, 1, ENEMY_SPEED_1, ANGLE_OFFSET_REVERSED, ENEMY_HEALTH_1, ENEMY_URL_1);
-  let e3 = new Aircraft(canvas.width * 3 / 4 , 0, 1, ENEMY_SPEED_1, ANGLE_OFFSET_REVERSED, ENEMY_HEALTH_1, ENEMY_URL_1);
-  enemies = [e1, e2, e3];
+  for (let enemyObj of level.enemyObjects) {
+    let enemy = createEnemy(enemyObj);
+    enemies.push(enemy);
+  }
 }
 
 function createBullets() {
@@ -112,15 +118,38 @@ function checkRaptorInScreenEdges() {
   }
 }
 
+async function readLevelFile(url) {
+  console.log('Reading level data');
+  const response = await fetch(url);
+  const levelData = await response.json();
+  return levelData;
+}
+
+function showLoading() {
+  ctx.font = `${FONTS_SIZE_L}px ${FONT_FAMILY}`;
+  ctx.fillStyle = 'white';
+  ctx.fillText('LOADING...', window.innerWidth / 2, window.innerHeight / 2);
+}
+
+async function preload(callback) {
+  console.log('preload started.');
+  showLoading();
+  readLevelFile('../assets/data/levels/level_1.json')
+    .then(levelData => {
+      level = new Level(levelData);
+      callback();
+    });
+  console.log('preload finished.');
+} 
+
 function setup() {
+  console.log('setup started.');
   setBackground();
   createRaptor();
   createEnemies();
   createBullets();
-
-    // setInterval(() => {
-    //     console.log('Setup finished.');
-    // }, 3000);
+  console.log(level);
+  console.log('setup finished.');  
 }
 
 function update() {
@@ -133,5 +162,11 @@ function update() {
   requestAnimationFrame(update);
 }
 
-setup();
-requestAnimationFrame(update);
+function runGame() {
+  setup();
+  requestAnimationFrame(update);
+}
+
+preload(runGame);
+
+
