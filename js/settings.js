@@ -40,7 +40,7 @@ const ENEMY_IMAGE_MAP = {
 }
 
 /* Bullet */
-const BULLET_SPEED = 10;
+const BULLET_SPEED = 20;
 const BULLET_RADIUS = 3;
 const BULLET_INTERVAL = 500;
 const BULLET_DAMAGE = 5;
@@ -48,9 +48,10 @@ const BULLET_COLOR = 'rgba(255,100,100,1)';
 
 /* Rocket */
 const ROCKET_SPEED = 10;
-const ROCKET_WIDTH = 3;
+const ROCKET_RADIUS = 5;
 const ROCKET_HEIGHT = 30;
 const ROCKET_DAMAGE = 30;
+const ROCKET_COLOR = 'rgba(100,100,255,1)';
 
 /* Enablers */
 var ALLOW_SOUND = false;

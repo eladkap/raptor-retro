@@ -8,6 +8,7 @@ canvas.height = window.innerHeight;
 var level;
 var raptor;
 var bullets;
+var rockets;
 var enemies = [];
 
 /* KEYBOARD EVENTS */
@@ -19,6 +20,13 @@ function KeyPressed(event) {
     if (event.key == ' ') {
       raptor.fireBullet(ANGLE_OFFSET);
     }
+    if (event.key == 'e') {
+      raptor.fireRocket(ANGLE_OFFSET, 'R');
+    }
+    if (event.key == 'q') {
+      raptor.fireRocket(ANGLE_OFFSET, 'L');
+    }
+
 }
 
 function KeyDown(event) {
@@ -76,6 +84,10 @@ function createBullets() {
   bullets = [];
 }
 
+function createRockets() {
+  rockers = [];
+}
+
 function updateRaptor() {
   raptor.display();
   raptor.update();
@@ -95,10 +107,25 @@ function updateBullets() {
   }
 }
 
+function updateRockets() {
+  for (let rocket of rockets) {
+    rocket.display();
+    rocket.update();
+  }
+}
+
 function removeBulletsOffScreen() {
   for (let i = 0; i < bullets.length; i++) {
     if (bullets[i].toDestroy) {
       bullets.splice(i, 1);
+    }
+  }
+}
+
+function removeRocketsOffScreen() {
+  for (let i = 0; i < rockets.length; i++) {
+    if (rockets[i].toDestroy) {
+      rockets.splice(i, 1);
     }
   }
 }

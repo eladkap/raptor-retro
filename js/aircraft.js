@@ -14,11 +14,7 @@ class Aircraft {
     }
 
     display() {
-        ctx.fillStyle = 'orange';
-        ctx.drawImage(this.img, this.pos.x, this.pos.y, this.img.naturalWidth * this.scale, this.img.naturalHeight * this.scale);
-        ctx.beginPath();
-        ctx.arc(this.pos.x, this.pos.y, 3, 0, 2 * Math.PI);
-        ctx.fill();
+        ctx.drawImage(this.img, this.pos.x - this.width / 2, this.pos.y - this.height / 2, this.img.naturalWidth * this.scale, this.img.naturalHeight * this.scale);
     }
 
     update() {

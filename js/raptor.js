@@ -67,14 +67,27 @@ class Raptor extends Aircraft {
     }
 
     fireBullet(a) {
-        // let v = Vector.fromAngle(this.angle + a, BULLET_SPEED);
         let v = new Vector(0, -BULLET_SPEED);
         let bullet = new Bullet(
             this.pos.x,
-            this.pos.y,
+            this.pos.y - this.height / 2,
             BULLET_DAMAGE,
             BULLET_RADIUS,
             BULLET_COLOR,
+            v
+          );
+          bullets.push(bullet);
+    }
+
+    fireRocket(a, side) {
+        let xoffset = (side == 'R') ? this.width / 4 : -this.width / 4;
+        let v = new Vector(0, -ROCKET_SPEED);
+        let bullet = new Rocket(
+            this.pos.x + xoffset,
+            this.pos.y,
+            ROCKET_DAMAGE,
+            ROCKET_RADIUS,
+            ROCKET_COLOR,
             v
           );
           bullets.push(bullet);
