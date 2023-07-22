@@ -9,9 +9,9 @@ class Raptor extends Aircraft {
         this.boostMaxSpeed = RAPTOR_MAX_BOOST_SPEED;
     }
 
-    display() {
-        ctx.drawImage(this.img, this.pos.x, this.pos.y, this.img.naturalWidth * this.scale, this.img.naturalHeight * this.scale);
-    }
+    // display() {
+    //     ctx.drawImage(this.img, this.pos.x, this.pos.y, this.img.naturalWidth * this.scale, this.img.naturalHeight * this.scale);ctx.fillStyle = 'orange';
+    // }
 
     update() {
         if (this.acceleration) {
@@ -70,7 +70,7 @@ class Raptor extends Aircraft {
         // let v = Vector.fromAngle(this.angle + a, BULLET_SPEED);
         let v = new Vector(0, -BULLET_SPEED);
         let bullet = new Bullet(
-            this.pos.x + this.width / 2,
+            this.pos.x,
             this.pos.y,
             BULLET_DAMAGE,
             BULLET_RADIUS,

@@ -1,9 +1,9 @@
 class Level {
-    episode
-    mission
-    enemyObjects
 
     constructor(levelData) {
+        this.episode = 1;
+        this.mission = 1;
+        this.enemyObjects = [];
         this.loadFromJsonFile(levelData);
     }
 
