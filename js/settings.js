@@ -14,13 +14,18 @@ const FONTS_SIZE_S = '24';
 const FONTS_SIZE_M = '36';
 const FONTS_SIZE_L = '48';
 
+/* Level Map Background Images */
+const BACKGROUND_IMAGE_LEVEL1 = 'assets/image/background/bg_space2.jpg';
+const STARS_NUMBER = 150;
+
+const GAME_SPEED = 0.5;
 
 /* Raptor */
 const RAPTOR_POS_X = window.innerWidth * 0.5;
 const RAPTOR_POS_Y = window.innerHeight * 0.8;
 const RAPTOR_ALTITUDE = 100;
 const RAPTOR_HEALTH = 1000;
-const RAPTOR_SHIELD = 1000;
+const RAPTOR_SHIELD = 0;
 const RAPTOR_ACC = 0.7;
 const RAPTOR_BOOST_ACC = 1;
 const RAPTOR_MAX_SPEED = 8;

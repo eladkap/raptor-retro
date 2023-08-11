@@ -69,8 +69,8 @@ class Raptor extends Aircraft {
     fireBullet(a) {
         let v = new Vector(0, -BULLET_SPEED);
         let bullet = new Bullet(
-            this.pos.x,
-            this.pos.y - this.height / 2,
+            this.pos.x + this.width / 2,
+            this.pos.y,
             BULLET_DAMAGE,
             BULLET_RADIUS,
             BULLET_COLOR,
@@ -80,11 +80,12 @@ class Raptor extends Aircraft {
     }
 
     fireRocket(a, side) {
-        let xoffset = (side == 'R') ? this.width / 4 : -this.width / 4;
+        let xoffset = (side == 'R') ? 3/4*this.width : this.width / 4;
+        let yoffset = this.height / 2;
         let v = new Vector(0, -ROCKET_SPEED);
         let bullet = new Rocket(
             this.pos.x + xoffset,
-            this.pos.y,
+            this.pos.y + yoffset,
             ROCKET_DAMAGE,
             ROCKET_RADIUS,
             ROCKET_COLOR,

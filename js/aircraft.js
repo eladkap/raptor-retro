@@ -14,7 +14,7 @@ class Aircraft {
     }
 
     display() {
-        ctx.drawImage(this.img, this.pos.x - this.width / 2, this.pos.y - this.height / 2, this.img.naturalWidth * this.scale, this.img.naturalHeight * this.scale);
+        ctx.drawImage(this.img, this.pos.x, this.pos.y, this.img.naturalWidth * this.scale, this.img.naturalHeight * this.scale);
     }
 
     update() {

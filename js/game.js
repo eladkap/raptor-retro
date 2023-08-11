@@ -59,10 +59,6 @@ function KeyReleased() {
 
 /* Keyboard Events */
 
-function setBackground() {
-
-}
-
 function createRaptor() {
   raptor = new Raptor(RAPTOR_POS_X, RAPTOR_POS_Y, RAPTOR_ALTITUDE, 0, 0, RAPTOR_HEALTH, RAPTOR_IMAGE_SOURCE, RAPTOR_SHIELD);
 }
@@ -85,7 +81,12 @@ function createBullets() {
 }
 
 function createRockets() {
-  rockers = [];
+  rockets = [];
+}
+
+function updateLevel() {
+  level.display();
+  level.update();
 }
 
 function updateRaptor() {
@@ -163,7 +164,7 @@ async function preload(callback) {
   showLoading();
   readLevelFile('../assets/data/levels/level_1.json')
     .then(levelData => {
-      level = new Level(levelData);
+      level = new Level(levelData, GAME_SPEED, canvas.width, canvas.height);
       callback();
     });
   console.log('preload finished.');
@@ -171,7 +172,6 @@ async function preload(callback) {
 
 function setup() {
   console.log('setup started.');
-  setBackground();
   createRaptor();
   createEnemies();
   createBullets();
@@ -181,6 +181,7 @@ function setup() {
 
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  updateLevel();
   updateRaptor();
   checkRaptorInScreenEdges();
   updateEnemies();
